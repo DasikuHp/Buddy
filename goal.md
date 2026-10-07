@@ -58,6 +58,8 @@ Fecha: 29 sep 2026
 > **Ajedrez:** "que peleé contra mí y que entrene contra Stockfish"
 >
 > **Orden:** "estoy instalando Rocket League así que sí"
+>
+> **Tienda y herramientas (7 oct 2026):** "epic, y tengo python y git ya instalados"
 
 ---
 
@@ -78,7 +80,7 @@ Una **sandbox viva** donde una IA actúa sobre juegos y tareas con la **menor la
 - **Nivel esperado en Rocket League.** Entrenar un bot decente por auto-juego cuesta cientos de millones a miles de millones de pasos. En un contenedor de 4 CPU sin GPU no llegaremos lejos. Ver 3.3.
 - **"Consciente de lo que necesita".** Lo interpreto como un **contrato de observación**: el agente (o su capa lenta) pide qué campos del estado quiere y con qué frecuencia. No es metacognición. Corrígeme si querías otra cosa.
 - **Decider con LoRA.** Cabe en 8 GB de VRAM en teoría. No lo he verificado en tu portátil.
-- **Anti-cheat de Rocket League** en Linux/Proton para partidas online: no verificado. Para partidas privadas no debería importar.
+- **Anti-cheat de Rocket League.** El dumper de mallas de colisión inyecta código en el proceso del juego. Solo se usa en juego libre sin conexión. No he verificado si Epic Online Services lo detecta; partidas online quedan fuera hasta comprobarlo.
 
 ---
 
@@ -108,8 +110,8 @@ Se entrena en tu portátil (i9 Ultra, GPU de 8 GB). Es mejor máquina que el con
 
 ### 3.4 Hitos
 
-1. **H0, ajedrez con Stockfish:** tablero en el navegador, tú contra el agente, agente contra Stockfish, métricas de Elo aproximado.
-2. **H1, Rocket League en Windows:** bot mínimo con RLBot v5 leyendo el estado a 120 Hz, medir latencia real del bucle. Política inicial entrenada en la nube.
+1. **H0, ajedrez con Stockfish** (`PROMPT_01.md`): tablero en el navegador, tú contra el agente, agente contra Stockfish, métricas de Elo aproximado.
+2. **H1, Rocket League en Windows (Epic):** bot mínimo con RLBot v5 leyendo el estado a 120 Hz, medir latencia real del bucle. Ver `PROMPT_02.md`. El entrenamiento con RocketSim es H1b.
 3. **H2, capa lenta:** Decider elige entre acciones (búsqueda web y modo de juego), con registro de decisiones para LoRA.
 4. **H3, Omarchy:** repetir H0–H2 fuera de Windows.
 
