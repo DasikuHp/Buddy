@@ -97,15 +97,14 @@ Una **sandbox viva** donde una IA actúa sobre juegos y tareas con la **menor la
 
 Cada agente publica un pequeño manifiesto: campos del estado que necesita, frecuencia y latencia máxima. El harness lo cumple o avisa de que no puede. Así el mismo agente sirve con estado interno (Rocket League, ajedrez) o con árbol de accesibilidad del navegador (búsqueda), y pasa a captura de pantalla solo si no hay otra opción.
 
-### 3.3 Entrenar en la nube (sin gastar tokens)
+### 3.3 Dónde se entrena (decidido el 7 oct 2026: en local)
 
-Entorno de esta sesión: **4 CPU, 15 GB de RAM, sin GPU, efímero**. Consecuencias:
+Se entrena en tu portátil (i9 Ultra, GPU de 8 GB). Es mejor máquina que el contenedor de la nube (4 CPU, sin GPU, efímero), así que la nube queda solo para programar y revisar logs.
 
-- **Ajedrez, viable.** Stockfish como maestro: se destila en una red pequeña por imitación y luego se juega contra Stockfish con límite de nivel. Corre bien en CPU y produce resultados medibles.
-- **Rocket League, solo humo y primeras fases.** `rlgym-learn` y `rocketsim` se instalan por pip aquí (verificado). Pero RocketSim necesita las **mallas de colisión del propio juego**. Esas las extraes tú de tu instalación con la herramienta de volcado de RocketSim. No las subimos a un repo público.
-- **Realista:** aquí se entrena una política básica (perseguir la pelota, chutar). Para nivel alto hará falta más cómputo. Tu i9 y la GPU de 8 GB, o una GPU alquilada. Lo decidimos con las curvas en la mano.
-- **Tokens:** los entrenamientos se lanzan como scripts en segundo plano con checkpoints y un resumen de métricas por logs. No mantengo el bucle a mano.
-- **El contenedor se destruye** al acabar la sesión. Los checkpoints se suben a la rama o a un almacenamiento aparte.
+- **Ajedrez:** Stockfish 19 como maestro. Primero imitación (destilar sus jugadas en una red pequeña), luego partidas contra Stockfish con nivel limitado. Corre bien en CPU.
+- **Rocket League:** RocketSim necesita las mallas de colisión de tu instalación del juego. Las extraes tú con la herramienta de volcado de RocketSim; **no se suben al repo**. Con tu GPU se puede entrenar una política básica en horas; nivel alto son días o semanas.
+- **Tokens:** los entrenamientos son scripts que corren solos con checkpoints y un resumen de métricas. Claude Code los escribe y los lanza; no mantiene el bucle a mano.
+- **Windows primero:** RLBot obliga a Windows nativo (o Proton en Linux). Python nativo de Windows para todo; sin WSL en el bucle de juego, para no añadir latencia.
 
 ### 3.4 Hitos
 
